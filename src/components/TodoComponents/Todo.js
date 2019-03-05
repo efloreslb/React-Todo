@@ -1,14 +1,16 @@
 import React from 'react';
 
 class Todo extends React.Component {
-    constructor() {
+    constructor(props) {
         super();
         
     }
 
     render() {
         return (
-            <div>This is the Todo Component</div>
+            <div className="todo-task">
+                <p>Todo Task: </p>                
+            </div>
         )
     }
 }

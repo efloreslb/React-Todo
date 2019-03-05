@@ -1,4 +1,5 @@
 import React from 'react';
+import TodoList from './TodoList';
 
 class TodoForm extends React.Component {
     constructor() {
@@ -8,7 +9,20 @@ class TodoForm extends React.Component {
 
     render() {
         return (
-            <div>This is the TodoForm Component</div>
+            <div>
+                <TodoList />
+                This is the TodoForm Component
+                <form>
+                    <input>
+                    </input>
+                    <button type="submit">
+                        Add Todo
+                    </button>
+                    <button>
+                        Clear completed
+                    </button>
+                </form>
+            </div>
         )
     }
 }
