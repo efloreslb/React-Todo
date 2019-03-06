@@ -34,7 +34,7 @@ class App extends React.Component {
     this.state = {
         taskList: todos,
         task: "",
-        id: "",
+        id: (Math.floor(1000000000000 + Math.random() * 9000000000000)),
         completed: false
     }
   }
@@ -50,7 +50,7 @@ class App extends React.Component {
       return {
         taskList: [...this.state.taskList, newTodo],
         task: "",
-        id: "",
+        id: (Math.floor(1000000000000 + Math.random() * 9000000000000)),
         completed: ""
       }
     })
