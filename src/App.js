@@ -46,14 +46,19 @@ class App extends React.Component {
       id: this.state.id,
       completed: this.state.completed
     };
-    this.setState(prevState => {
-      return {
-        taskList: [...this.state.taskList, newTodo],
-        task: "",
-        id: (Math.floor(1000000000000 + Math.random() * 9000000000000)),
-        completed: ""
-      }
-    })
+    if (this.state.task === "") {
+      alert("You must add a new task")
+    } 
+    else {
+      this.setState(prevState => {
+        return {
+          taskList: [...this.state.taskList, newTodo],
+          task: "",
+          id: (Math.floor(1000000000000 + Math.random() * 9000000000000)),
+          completed: ""
+        }
+      })
+    }
   }
 
   inputChange = event => {

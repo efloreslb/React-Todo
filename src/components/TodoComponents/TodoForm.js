@@ -11,7 +11,7 @@ function TodoForm(props) {
             >
             </input>
             <button type="submit">Add Todo</button>
-            <button>Clear Completed</button>
+            <button type="reset">Clear Completed</button>
         </form>
     )
 }
