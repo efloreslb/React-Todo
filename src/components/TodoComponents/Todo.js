@@ -1,19 +1,10 @@
 import React from 'react';
 
-class Todo extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        return (
-            <div className="todo-task">
-                <p>{this.props.task}</p>
-                <p>{this.props.id}</p>
-                <p>{this.props.completed}</p> 
-            </div>
-        )
-    }
+//class Todo extends React.Component {// Class component only needed to hold state
+function Todo(props) {
+    return (
+        <p style={{color:"steelblue"}}>{props.propTodo.task}</p> //Displaying the task property of each propTodo which is passed by TodoList
+    )
 }
 
 export default Todo;

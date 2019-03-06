@@ -3,20 +3,14 @@
 import React from 'react';
 import Todo from './Todo'
 
-class TodoList extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        console.log(this.state)
-        return (
-            <div style={{color:"orange"}}>
-               This is inside todoList 
-               <Todo />
-            </div>
-        )
-    }
+function TodoList(props) {
+    return (
+        <div>
+            {props.propTodos.map(todo => (
+                <Todo propTodo={todo} key={todo.id}/> //Creates a Todo component for each object inside the propTodos array
+            ))}
+        </div>
+    )
 }
 
 export default TodoList;

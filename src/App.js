@@ -12,9 +12,18 @@ const todos = [
     task: 'Bake Cookies',
     id: 1528817084358,
     completed: false
+  },
+  {
+    task: 'Eat Cookies',
+    id: 1528817098476,
+    completed: false
+  },
+  {
+    task: 'Feel Bad About Eating All The Cookies',
+    id: 1528817089124,
+    completed: false
   }
 ];
-
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -24,12 +33,13 @@ class App extends React.Component {
     super();
     this.state = {
         taskList: todos,
+        task: "",
         id: "",
-        completed: ""
+        completed: false
     }
   }
 
-  formSubmit = event => {
+  submitAddTodo = event => {
     event.preventDefault();
     let newTodo = {
       task: this.state.task,
@@ -47,15 +57,19 @@ class App extends React.Component {
   }
 
   inputChange = event => {
-
+    this.setState({[event.target.name]: event.target.value});
+    // console.log([event.target.value]);
+    // console.log("inputChange");
   }
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList />
-        <TodoForm />
+        <TodoList propTodos={this.state.taskList}/>
+
+        <TodoForm state={this.state} submit={this.submitAddTodo} change={this.inputChange}/>
+        {/* Functions need to be passed as props to be accessible in other components */}
       </div>
     );
   }
