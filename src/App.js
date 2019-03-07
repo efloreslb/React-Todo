@@ -96,13 +96,13 @@ class App extends React.Component {
         <h2>Task Tracker</h2>
         <TodoList 
           todos={this.state.taskList}
+          toggleTodo={this.toggleTodo} //Spent 1-2 hours!! I accidentally passed this to TodoForm
         />
 
         <TodoForm 
           task={this.state.task} 
           addTodo={this.addTodo} 
           inputChange={this.inputChange} 
-          toggleTodo={this.toggleTodo}
         />
         {/* Functions need to be passed as props to be accessible in other components */}
       </div>
