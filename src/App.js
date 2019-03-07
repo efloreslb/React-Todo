@@ -2,6 +2,8 @@ import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
 
+import "./App.css";
+
 const todos = [
   {
     task: 'Organize Garage',
@@ -33,47 +35,75 @@ class App extends React.Component {
     super();
     this.state = {
         taskList: todos,
-        task: "",
-        id: (Math.floor(1000000000000 + Math.random() * 9000000000000)),
-        completed: false
-    }
-  }
-
-  submitAddTodo = event => {
-    event.preventDefault();
-    let newTodo = {
-      task: this.state.task,
-      id: this.state.id,
-      completed: this.state.completed
-    };
-    if (this.state.task === "") {
-      alert("You must add a new task")
-    } 
-    else {
-      this.setState(prevState => {
-        return {
-          taskList: [...this.state.taskList, newTodo],
-          task: "",
-          id: (Math.floor(1000000000000 + Math.random() * 9000000000000)),
-          completed: ""
-        }
-      })
+        task: ""
     }
   }
 
   inputChange = event => {
     this.setState({[event.target.name]: event.target.value});
     // console.log([event.target.value]);
-    // console.log("inputChange");
+  }
+
+  addTodo = event => {
+    event.preventDefault();
+
+    // let newTodo = {
+    //   task: this.state.task,
+    //   id: Date.now(),
+    //   completed: false
+    // };
+    if (this.state.task === "") {
+      return;
+    } 
+    else {
+      this.setState(prevState => {
+        return {
+          taskList: [...this.state.taskList, 
+            {
+              task: prevState.task,
+              id: Date.now(),
+              completed: false
+            }
+          ],
+          task: ""
+        }
+      })
+    }
+  }
+
+  toggleTodo = taskId => {
+    console.log('toggle called', taskId);
+    this.setState(prevState => {
+      return {
+        taskList: prevState.taskList.map(todoItem => {
+          if (todoItem.id === taskId) {
+            return {
+              task: todoItem.task,
+              id: todoItem.id,
+              completed: !todoItem.completed
+            }
+          } else {
+            return todoItem;
+          }
+        })
+      }
+    })
   }
 
   render() {
     return (
       <div>
-        <h2>Welcome to your Todo App!</h2>
-        <TodoList propTodos={this.state.taskList}/>
+        <h2>Task Tracker</h2>
+        <TodoList 
+          todos={this.state.taskList}
+        />
 
-        <TodoForm state={this.state} submit={this.submitAddTodo} change={this.inputChange}/>
+        <TodoForm 
+          task={this.state.task} 
+          addTodo={this.addTodo} 
+          inputChange={this.inputChange} 
+          toggleTodo={this.toggleTodo}
+        />
         {/* Functions need to be passed as props to be accessible in other components */}
       </div>
     );

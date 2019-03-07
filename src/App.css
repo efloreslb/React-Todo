@@ -1,0 +1,21 @@
+body {
+    background-color: lightcyan;
+}
+
+.todo {
+    cursor: pointer;
+    margin-bottom: 25px;
+    font-size: 18px;
+    font-family: 'Trebuchet MS'
+}
+
+.todo.completed {
+    text-decoration: line-through;
+}
+
+input {
+    height: 30px;
+    font-size: 18px;
+    font-family: 'Trebuchet MS'
+}
+

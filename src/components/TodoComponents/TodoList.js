@@ -6,9 +6,10 @@ import Todo from './Todo'
 function TodoList(props) {
     return (
         <div>
-            {props.propTodos.map(todo => (
-                <Todo propTodo={todo} key={todo.id}/> //Creates a Todo component for each object inside the propTodos array
-            ))}
+            {props.todos.map(todoItem => {
+                 return <Todo todo={todoItem} key={todoItem.id} toggleTodo={props.toggleTodo} /> 
+                //Creates a Todo component for each object inside the propTodos array
+            })}
         </div>
     )
 }
