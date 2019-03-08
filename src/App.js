@@ -6,22 +6,22 @@ import "./App.css";
 
 const todos = [
   {
-    task: 'Organize Garage',
+    task: 'Feed the Dogs',
     id: 1528817077286,
     completed: false
   },
   {
-    task: 'Bake Cookies',
+    task: 'Feed the Cat',
     id: 1528817084358,
     completed: false
   },
   {
-    task: 'Eat Cookies',
+    task: 'Buy Coffee',
     id: 1528817098476,
     completed: false
   },
   {
-    task: 'Eat More',
+    task: 'Meditate',
     id: 1528817089124,
     completed: false
   }
@@ -94,28 +94,39 @@ class App extends React.Component {
     console.log('cleared', this.state.taskList);
     this.setState(prevState => {
       return {
-        taskList: prevState.taskList.filter(completedItem => {
-          return completedItem.completed !== true;
+        taskList: prevState.taskList.filter(item => {
+          return item.completed !== true;
         })
       }
     })
   }
 
+  delete = taskId => {
+    const newArr = this.state.taskList.slice();
+    const filtered = newArr.filter(item => item.id !== taskId);
+    this.setState({taskList: filtered});
+  }
+
   render() {
     return (
-      <div>
-        <h2>Task Tracker</h2>
-        <TodoList 
-          todos={this.state.taskList}
-          toggleTodo={this.toggleTodo} //Spent 1-2 hours!! I accidentally passed this to TodoForm
-        />
+      <div className="container">
+        <h1>TASK TRACKER</h1>
 
         <TodoForm 
           task={this.state.task} 
           addTodo={this.addTodo} 
           inputChange={this.inputChange} 
           clear={this.clear}
+
         />
+
+        <TodoList 
+          todos={this.state.taskList}
+          deleteTodo={this.delete}
+          toggleTodo={this.toggleTodo} //Spent 1-2 hours!! I accidentally passed this to TodoForm
+        />
+
+        
         {/* Functions need to be passed as props to be accessible in other components */}
       </div>
     );

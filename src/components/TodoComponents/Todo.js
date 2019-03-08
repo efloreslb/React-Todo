@@ -5,16 +5,17 @@ export default function Todo(props) {
     let completed = props.todo.completed ? "completed" : "";
 
     return (
-        <div 
-            className = {`todo ${completed}`}
-            key = {props.todo.id}
-            onClick = {event => {
-                //console.log(props.toggle);
-                props.toggleTodo(props.todo.id);
-            }}
-        >
-        
-            <p>{props.todo.task}</p>
-        </div> //Displaying the task property of each propTodo which is passed by TodoList
+        <div className={`todoContainer ${completed}`}>
+            <div 
+                className = {`todo ${completed}`}
+                key = {props.todo.id} //when toggling - error asks for key prop
+                onClick = {event => {
+                    props.toggleTodo(props.todo.id);
+                }}
+            >
+                {props.todo.task}
+            </div>
+            <button className="buttonDel" onClick={event => props.delete(props.todo.id)}>Delete</button>
+        </div>
     )
 }

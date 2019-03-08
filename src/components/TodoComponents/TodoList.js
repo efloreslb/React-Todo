@@ -3,11 +3,12 @@
 import React from 'react';
 import Todo from './Todo'
 
-function TodoList(props) {
+function TodoList (props) { /*({toggleTodo, deleteTodo, todos})  //destructuring */
+    // const {toggleTodo, deleteTodo, todos} = props; //then you would remove .props below
     return (
-        <div>
+        <div className="todoList">
             {props.todos.map(todoItem => {
-                 return <Todo todo={todoItem} key={todoItem.id} toggleTodo={props.toggleTodo} /> 
+                 return <Todo todo={todoItem} key={todoItem.id} toggleTodo={props.toggleTodo} delete={props.deleteTodo}/> 
                 //Creates a Todo component for each object inside the propTodos array
             })}
         </div>
