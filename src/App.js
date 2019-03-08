@@ -21,7 +21,7 @@ const todos = [
     completed: false
   },
   {
-    task: 'Feel Bad About Eating All The Cookies',
+    task: 'Eat More',
     id: 1528817089124,
     completed: false
   }
@@ -90,6 +90,17 @@ class App extends React.Component {
     })
   }
 
+  clear = tasks => {
+    console.log('cleared', this.state.taskList);
+    this.setState(prevState => {
+      return {
+        taskList: prevState.taskList.filter(completedItem => {
+          return completedItem.completed !== true;
+        })
+      }
+    })
+  }
+
   render() {
     return (
       <div>
@@ -103,6 +114,7 @@ class App extends React.Component {
           task={this.state.task} 
           addTodo={this.addTodo} 
           inputChange={this.inputChange} 
+          clear={this.clear}
         />
         {/* Functions need to be passed as props to be accessible in other components */}
       </div>
