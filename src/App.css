@@ -3,7 +3,7 @@
 }
 
 body {
-    background-color: #54494B;
+    
 }
 
 .container {
@@ -11,7 +11,7 @@ body {
     max-width: 500px;
     width: 100%;
     padding: 12px;
-    background-color: #FFCA3A;
+    /* background-color: #FFCA3A; */
     background-size: 75%;
     border-radius: 5px;
 
@@ -30,29 +30,42 @@ h1 {
     justify-content: flex-start;
     margin-top: 20px;
     min-height: 160px;
+    width: 100%;
 }
 
 .todoContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 10px;
     font-size: 14px;
     font-family: 'Open Sans';
     width: 150px;
+    border-radius: 3px;
     margin-right: 6px;
     height: 150px;
-    background-color: #FF595E;
+    background-color: rgb(250, 198, 115);
     padding: 10px;
 }
 
 .todoContainer.completed {
     background-color: #54494B;
-    opacity: .8;
+    opacity: .5;
+}
+
+.todoContainer.completed::before {
+    content: '\2611';
+    z-index: -100;
+    position: absolute;
+    font-size: 110px;
+    color: #fff;
+    opacity: .3;
+    margin-top: -25px;
+    margin-left: 23px;
 }
 
 .todo {
-    color: #fff;
+    /* color: #fff; */
     word-wrap: break-word;
     cursor: pointer;
     min-height: 70%;
@@ -91,8 +104,16 @@ input {
     cursor: pointer;
 }
 
+.buttonAdd {
+    width: 110px;
+}
+
+.buttonAdd:hover, .buttonClr:hover {
+    background-color: rgb(67, 149, 201);
+}
+
 .buttonAdd::after {
-    content: '\00bb';
+    content: '\261B';
     opacity: 0;
     transition: .5s;
 }
@@ -103,11 +124,16 @@ input {
 }
 
 .buttonDel {
-    background-color: rgb(250, 165, 168);
-    color: #54494B;
-    border: 1px solid #54494B;
+    background-color: rgb(175, 17, 59);
+    color: #fff;
+    border: 1px solid rgb(175, 17, 59);
     border-radius: 5px;
     padding: 5px 10px;
-    width: 100%;
+    /* width: 100%; */
+    position: right;
     cursor: pointer;
+}
+
+.buttonDel:hover {
+    background-color: #D31245;
 }
